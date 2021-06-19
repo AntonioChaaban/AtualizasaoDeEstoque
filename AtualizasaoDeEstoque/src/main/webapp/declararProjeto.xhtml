@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title>Declarar Projeto</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Bootstrap CSS -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+	<!-- Costumize CSS -->
+	<h:outputStylesheet library="css" name="template.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images/fav.ico']}" />
+</h:head>
+<body>
+	<h:form id="form">
+		<table width="100%">
+
+
+			<tr>
+				<td colspan="2" align="center" class="mar"><ui:insert
+						name="cabecalho">
+						<h:form>
+
+							<div class="navbar navbar-dark bg-navbar navbar-expand">
+								<div class="container collapse navbar-collapse">
+									<p:graphicImage value="#{resource['images/fav.ico']}" />
+									<div class="navbar-brand font-weight-bold ">Una os Arquivos .xlsx, .excel e gere gráficos</div>
+									<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+										<li class="nav-item"><a href="home.xhtml"
+											class="nav-link">Início</a></li>
+
+									</ul>
+
+								</div>
+							</div>
+						</h:form>
+					</ui:insert>
+				</td>
+			</tr>
+			<tr>
+			<td valign="top"
+					class="pt-5  content active mar d-flex justify-content-center"><ui:insert
+						name="conteudo">
+			<h:form id="formPrincipal">
+				<div class="border-left mb-4 ml-3">
+					<h4 class="ml-3 py-2 font-weight-bold">Declarar Projeto</h4>
+				</div>
+				<h:panelGrid columns="1" class="container d-flex justify-content-center"  >
+					<div class="container mt-2 d-flex justify-content-center">
+						<p:growl id="msgs" showDetail="true"
+							skipDetailIfEqualsSummary="true" />
+						
+						<div class="mt-2 d-flex justify-content-end">
+							<p:inputText placeholder="Nome" value=""/>
+							<p:inputText placeholder="Descrição de upload" value=""/>
+							<h6>Defina o <strong>Nome</strong> para definir o nome do diretório</h6>
+							<h6>Defina a <strong>Descrição de upload</strong> que aparecerá na pagina onde os colaboradores farão o upload do arquivo </h6>
+							<h:commandButton value="Definir" action="#" class="btn btn-azul mr-2 ml-2"/>
+						</div>
+					</div>
+				</h:panelGrid>
+			</h:form>
+			</ui:insert></td>
+			</tr>
+		</table>
+	</h:form>
+		<div class="box footer pt-4 font-weight-lighter "
+		style="text-align: center;">
+		<h:outputText value="2021 - Todos os direitos reservados." />
+	</div>
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+</html>
