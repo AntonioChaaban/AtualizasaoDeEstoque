@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title>Atualizasao de Estoque| inicio</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!-- Bootstrap CSS -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+	<!-- Costumize CSS -->
+	<h:outputStylesheet library="css" name="template.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images/fav.ico']}" />
+</h:head>
+<body>
+	<h:form id="form">
+		<table width="100%">
+
+
+			<tr>
+				<td colspan="2" align="center" class="mar"><ui:insert
+						name="cabecalho">
+						<h:form>
+
+							<div class="navbar navbar-dark bg-navbar navbar-expand">
+								<div class="container collapse navbar-collapse">
+									<p:graphicImage value="#{resource['images/fav.ico']}" />
+									<div class="navbar-brand font-weight-bold ">Una os Arquivos .xlsx, .excel e gere gráficos</div>
+									<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+										<li class="nav-item"><a href="home.xhtml"
+											class="nav-link">Início</a></li>
+
+									</ul>
+
+								</div>
+							</div>
+						</h:form>
+					</ui:insert></td>
+			</tr>
+			<tr>
+			<td valign="top"
+					class="pt-5  content active mar d-flex justify-content-center"><ui:insert
+						name="conteudo">
+			<h:form id="formPrincipal">
+				<div class="border-left mb-4 ml-3">
+					<h4 class="ml-3 py-2 font-weight-bold">Nome do Diretório</h4>
+				</div>
+				<h:panelGrid columns="1" class="container d-flex justify-content-center">
+					<div class="container mt-2 d-flex justify-content-center">
+						<p:growl id="msgs" showDetail="true"
+							skipDetailIfEqualsSummary="true" />
+		
+						<p:dataTable value="#{historicoTransferenciaController.transNomes}"
+							var="obj" rows="5" styleClass="table" paginator="true"
+							resizableColumns="true"
+							style="margin-bottom:20px; font-size:15px;"
+							emptyMessage="Nenhum registro." paginatorAlwaysVisible="false"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} encontrados"
+							rowsPerPageTemplate="5,10,15">
+		
+							<f:facet name="header">
+		       						Resultado da Busca
+		  					</f:facet>
+							<tbody>
+								<td>
+									<td><p:column style="width:80px; font-size:15px;">
+											<f:facet name="header">Nome do Arquivo</f:facet>
+											<h:outputText value="">
+											</h:outputText>
+										</p:column></td>
+								</td>
+								<p:column style="width:172px; font-size:15px;">
+									<f:facet name="header">Tamanho do arquivo</f:facet>
+									<h:outputText value="">
+									</h:outputText>
+								</p:column>
+							</tbody>
+						</p:dataTable>
+						
+						<div class="mt-2 d-flex justify-content-end">
+							<h:panelGrid id="panelBotoes" columns="5">
+							 <div class="p-col-12">
+				                <div class="ui-inputgroup">
+				                    <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+				                    <p:inputText style="width: 50rem" placeholder="Link de acesso para os colaboradores"/>
+				                </div>
+				            </div>
+							<h:commandButton value="Gerar Gráficos"
+								actionListener="#{diretorioController.gerarGraficos()}"
+								class="btn btn-azul mr-2 ml-2">
+								<f:ajax render="@all" execute="@form" resetValues="true" />
+							</h:commandButton>
+							<h:commandButton value="Unir Arquivos"
+								action="#{diretorioController.unirArquivos()}"
+								class="btn btn-amarelo mr-2">
+								<f:ajax render="@form" execute="@this" />
+							</h:commandButton>
+							
+							</h:panelGrid>
+						</div>
+					</div>
+				</h:panelGrid>
+			</h:form>
+			</ui:insert></td>
+			</tr>
+		</table>
+	</h:form>
+		<div class="box footer pt-4 font-weight-lighter "
+		style="text-align: center;">
+		<h:outputText value="2021 - Todos os direitos reservados." />
+	</div>
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+</html>
